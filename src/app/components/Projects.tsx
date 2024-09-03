@@ -121,9 +121,13 @@ const Projects: React.FC = () => {
               )}</div>
               <h3>{project.name}</h3>
               <p>{project.description}</p>
-              <div className="tools-used"><p>{project.tools.map(tool => 
-                <span className="tool">{tool}</span>
-              )}</p></div>
+              <div className="tools-used">
+              <p>
+                {project.tools.map((tool, index) => 
+                  <span key={index} className="tool">{tool}</span>  // Adding key prop here
+                )}
+              </p>
+              </div>
             </div>
            </div>
         ))}

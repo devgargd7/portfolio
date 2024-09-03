@@ -54,11 +54,11 @@ const Hero: React.FC<HeroProps> = ({ setNameRef }) => {
   return (
     <section id="hero" className="hero">
       <div className="content">
-        <h1>Hey there, I'm</h1>
+        <h1>Hey there, I&apos;m</h1>
         <h2 className="big-heading" ref={setNameRef}>Dev Garg.</h2>
-        <h3 className="big-heading">I build tech for tomorrow's challenges.</h3>
+        <h3 className="big-heading">I build tech for tomorrow&apos;s challenges.</h3>
         <p>
-          I'm a <span className="dynamic-job-title">{jobTitle}<span className="cursor">|</span></span>
+          I&apos;m a <span className="dynamic-job-title">{jobTitle}<span className="cursor">|</span></span>
         </p>
         {/* <p>
           I'm a software engineer based in Boston, MA specializing in building

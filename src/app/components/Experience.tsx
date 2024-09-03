@@ -84,7 +84,7 @@ const Experience: React.FC = () => {
   return (
     <section id="experience" className="experience">
       <div className="content">
-        <h2>Where I’ve Worked</h2>
+        <h2>Where I&apos;ve Worked</h2>
         <div className="jobs">
         <div className="timeline">
           {jobs.map((job, index) => (
@@ -104,7 +104,7 @@ const Experience: React.FC = () => {
         </div>
       </div>
       <div className="content study">
-        <h2>Where I've Studied</h2>
+        <h2>Where I&apos;ve Studied</h2>
         <div className="education">
         <div className="edu-timeline ">
           {education.map((edu, index) => (
