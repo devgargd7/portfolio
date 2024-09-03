@@ -1,7 +1,7 @@
 .contact {
   /* padding: 100px; */
   text-align: center;
-  padding: 100px 0;
+  padding: 100px 50px;
   margin: 0 auto;
   display: block;
   max-width: 1000px;
@@ -9,7 +9,7 @@
 
 .contact h2 {
   color: #001F3F;
-  font-size: clamp(16px, 4vw, 48px);
+  font-size: clamp(24px, 4vw, 48px);
   font-weight: 600;
   margin-bottom: 40px;
 }
@@ -28,7 +28,17 @@
   transition: all 0.3s ease;
 }
 
+.contact .p {
+  color: #8892b0;
+}
+
 .btn:hover {
   transform: translateY(-5px);
   background-color: rgba(34, 139, 34, 0.1);
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 100px 0;
+  }
 }

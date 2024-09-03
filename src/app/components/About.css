@@ -2,7 +2,7 @@
   background: #FFF8E8;
   color: #FFF8E8;
   font-family: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
-  padding: 100px 0;
+  padding: 100px 50px;
   margin: 0 auto;
   display: block;
   max-width: 1000px;
@@ -10,7 +10,7 @@
 
 .about h2 {
   color: #001F3F;
-  font-size: clamp(16px, 4vw, 48px);
+  font-size: clamp(24px, 4vw, 48px);
   font-weight: 600;
   margin-bottom: 40px;
 }
@@ -74,7 +74,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns */
   list-style: none;
-  padding: 0 50px;
+  padding: 0 100px;
 }
 
 .skills-list li {
@@ -94,7 +94,10 @@
 }
 
 @media (max-width: 768px) {
+  .about {
+    padding: 100px 0;
+  }
   .skills-list {
-    padding: 0 20px;
+    padding: 0 30px;
   }
 }

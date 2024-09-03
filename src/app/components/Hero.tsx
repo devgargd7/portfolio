@@ -56,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ setNameRef }) => {
       <div className="content">
         <h1>Hey there, I&apos;m</h1>
         <h2 className="big-heading" ref={setNameRef}>Dev Garg.</h2>
-        <h3 className="big-heading">I build tech for tomorrow&apos;s challenges.</h3>
+        <h3 className="big-heading">I build tech for tomorrow&apos;s innovations.</h3>
         <p>
           I&apos;m a <span className="dynamic-job-title">{jobTitle}<span className="cursor">|</span></span>
         </p>

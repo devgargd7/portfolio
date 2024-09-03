@@ -5,13 +5,7 @@
   height: 100vh; 
   background-color: #FFF8E8; 
   color: #228B22;
-  /* padding: 0 100px; */
-}
-
-.content {
-  max-width: 1000px;
-  text-align: left;
-  padding: 40px;
+  padding: 0 50px;
 }
 
 .hero h1 {
@@ -43,9 +37,9 @@
 }
 
 @media (max-width: 768px) {
-  /* .hero {
-    padding: 0 100px;
-  } */
+  .hero {
+    padding: 100px 0;
+  }
 
   h2 {
     font-size: clamp(28px, 8vw, 56px);

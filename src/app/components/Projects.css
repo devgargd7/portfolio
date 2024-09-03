@@ -2,7 +2,7 @@
   /* padding: 50px; */
   background: #FFF8E8;
   color: #F5F5F5;
-  padding: 100px 0;
+  padding: 100px 50px;
   margin: 0 auto;
   display: block;
   max-width: 1000px;
@@ -10,13 +10,20 @@
 
 .projects h2 {
   color: #001F3F;
-  font-size: clamp(16px, 4vw, 48px);
+  font-size: clamp(24px, 4vw, 48px);
   font-weight: 600;
   margin-bottom: 40px;
 }
 
-.projects p {
+.projects h3 {
   font-size: 16px;
+  margin: 5px 0 10px 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.projects p {
+  font-size: clamp(12px, 2vw, 16px);
+  margin-bottom: 10px;
 }
 
 
@@ -27,6 +34,9 @@
 }
 
 @media (max-width: 768px) {
+  .projects {
+    padding: 100px 0;
+  }
   .project-grid {
     grid-template-columns: 1fr; /* One card per row on smaller screens */
   }

@@ -2,7 +2,7 @@
   background-color: #FFF8E8; 
   color: #228B22;
   font-family: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
-  padding: 100px 0;
+  padding: 100px 50px;
   margin: 0 auto;
   display: block;
   max-width: 1000px;
@@ -10,7 +10,7 @@
 
 .experience h2 {
   color: #001F3F;
-  font-size: clamp(16px, 4vw, 48px);
+  font-size: clamp(24px, 4vw, 48px);
   font-weight: 600;
 }
 
@@ -45,7 +45,7 @@
 
 .job h3 {
   color: #228B22; 
-  font-size: 1.2rem;
+  font-size: 16px;
   transition: color 0.3s ease;
   margin-bottom: 0; 
 }
@@ -111,7 +111,7 @@
 
 .edu h3 {
   color: #228B22; 
-  font-size: 1.2rem;
+  font-size: 16px;
   transition: color 0.3s ease;
   margin-bottom: 0; 
 }
@@ -142,9 +142,9 @@
 }
 
 @media (max-width: 768px) {
-  /* .hero {
-    padding: 0 100px;
-  } */
+  .experience {
+    padding: 100px 0;
+  }
 
   .jobs {
     padding: 20px 20px 40px 20px;

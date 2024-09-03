@@ -69,8 +69,14 @@ body {
   margin-top: 20px;
 } */
 
-.content {
+/* .content {
   max-width: 1000px;
   text-align: left;
-  padding: 40px;
-}
+  padding: 0 40px 0 40px;
+} */
+
+/* @media (max-width: 768px) {
+  .content {
+    padding: 0;
+  }
+} */
