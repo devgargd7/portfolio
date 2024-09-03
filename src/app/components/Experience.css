@@ -1,0 +1,156 @@
+.experience {
+  background-color: #FFF8E8; 
+  color: #228B22;
+  font-family: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+  padding: 100px 0;
+  margin: 0 auto;
+  display: block;
+  max-width: 1000px;
+}
+
+.experience h2 {
+  color: #001F3F;
+  font-size: clamp(16px, 4vw, 48px);
+  font-weight: 600;
+}
+
+.timeline {
+  position: relative;
+  padding: 20px;
+  /* border-left: 2px dashed #228B22;  */
+}
+
+.jobs {
+  padding: 20px 100px 40px 20px;
+}
+
+
+.job {
+  position: relative;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.job::before {
+  content: ">";
+  position: absolute;
+  left: -26px; 
+  top: 2px;
+  /* height: 10px; */
+  /* width: 10px; */
+  /* background-color: #001F3F; 
+  border-radius: 50%; 
+  box-shadow: 0 0 0 4px #001F3F;  */
+}
+
+.job h3 {
+  color: #228B22; 
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  margin-bottom: 0; 
+}
+
+.job h3 a {
+  color: #8B4513; 
+  transition: color 0.3s ease;
+}
+
+.job h3 a:hover {
+  color: #1A1A1D; 
+}
+
+.job .range {
+  color: #8892b0;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.job ul {
+  margin-top: 10px;
+  list-style-type: square;
+  margin-left: 20px;
+}
+
+.job ul li {
+  color: #8892b0;
+}
+
+.education {
+  padding: 20px 20px 40px 100px;
+}
+
+.study {
+  text-align: right;
+}
+
+.edu-timeline {
+  position: relative;
+  padding: 20px;
+  /* border-right: 2px dashed #228B22;  */
+}
+
+
+.edu {
+  position: relative;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.edu::after {
+
+  content: "<";
+  position: absolute;
+  right: -26px; 
+  top: 2px;
+  /* height: 10px; */
+  /* width: 10px; */
+  /* background-color: #001F3F; 
+  border-radius: 50%; 
+  box-shadow: 0 0 0 4px #001F3F;  */
+}
+
+.edu h3 {
+  color: #228B22; 
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  margin-bottom: 0; 
+}
+
+.edu h3 a {
+  color: #8B4513; 
+  transition: color 0.3s ease;
+}
+
+.edu h3 a:hover {
+  color: #1A1A1D; 
+}
+
+.edu .range {
+  color: #8892b0;
+  font-size: 0.9rem;
+  margin-top: 5px; 
+}
+
+.edu ul {
+  margin-top: 10px;
+  list-style-type: square;
+  margin-left: 20px;
+}
+
+.edu ul li {
+  color: #8892b0;
+}
+
+@media (max-width: 768px) {
+  /* .hero {
+    padding: 0 100px;
+  } */
+
+  .jobs {
+    padding: 20px 20px 40px 20px;
+  }
+
+  .education {
+    padding: 20px 20px 40px 20px;
+  }
+}

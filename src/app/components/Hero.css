@@ -1,0 +1,77 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; 
+  background-color: #FFF8E8; 
+  color: #228B22;
+  /* padding: 0 100px; */
+}
+
+.content {
+  max-width: 1000px;
+  text-align: left;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin: 0 0 20px 4px;
+  color: #228B22;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+  font-size: clamp(16px, 5vw, 20px);
+  font-weight: 400;
+}
+
+.hero h2 {
+  font-size: clamp(40px, 8vw, 80px);
+  font-weight: 600;
+  color: #001F3F;
+  margin: 0;
+}
+
+.hero h3 {
+  font-size: clamp(24px, 6vw, 48px);
+  font-weight: 600;
+  color: #8B4513;
+  margin:  0;
+}
+
+.hero p {
+  color: #228B22;
+  margin: 20px 0 0;
+  max-width: 540px;
+}
+
+@media (max-width: 768px) {
+  /* .hero {
+    padding: 0 100px;
+  } */
+
+  h2 {
+    font-size: clamp(28px, 8vw, 56px);
+  }
+
+  h3 {
+    font-size: clamp(24px, 6vw, 48px);
+  }
+}
+
+/* @media (max-width: 480px) {
+  .hero {
+    padding: 0 25px;
+  }
+} */
+
+.cursor {
+  display: inline-block;
+  color: #8B4513;
+  /* margin-left: 5px; */
+  /* width: 8px; */
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

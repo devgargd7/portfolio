@@ -1,0 +1,34 @@
+.contact {
+  /* padding: 100px; */
+  text-align: center;
+  padding: 100px 0;
+  margin: 0 auto;
+  display: block;
+  max-width: 1000px;
+}
+
+.contact h2 {
+  color: #001F3F;
+  font-size: clamp(16px, 4vw, 48px);
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.contact .btn {
+  display: block;
+  margin-top: 50px;
+  padding: 1rem 1.75rem;
+  background-color: transparent;
+  color: #8892b0;
+  border: 1px solid #228B22;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  background-color: rgba(34, 139, 34, 0.1);
+}
