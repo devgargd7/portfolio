@@ -8,9 +8,9 @@ interface HeaderProps {
   nameRef: React.RefObject<HTMLHeadingElement>;
 }
 
-const Header: React.FC<HeaderProps> = ({ nameRef }) => {
+const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showName, setShowName] = useState(false);
+  // const [showName, setShowName] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [visible, setVisible] = useState(true);
 
@@ -20,14 +20,14 @@ const Header: React.FC<HeaderProps> = ({ nameRef }) => {
   };
 
   const handleScroll = () => {
-    if (nameRef.current) { 
-      const namePosition = nameRef.current.offsetTop + nameRef.current.clientHeight;
+    // if (nameRef.current) { 
+      // const namePosition = nameRef.current.offsetTop + nameRef.current.clientHeight;
       const currentScrollPos = window.pageYOffset;
-      setShowName(currentScrollPos > namePosition);
+      // setShowName(currentScrollPos > namePosition);
       const currentScrollY = window.scrollY;
       setVisible((lastScrollY > currentScrollY) || currentScrollY < 10);
       setLastScrollY(currentScrollY);
-    }
+    // }
   };
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({ nameRef }) => {
       <nav className="nav">
         <div className="logo">
           <a onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              {showName ? "Dev Garg" : "DG"}
+              {"Dev Garg"/* {showName ? "Dev Garg" : "DG"} */}
           </a>
         </div>
         <div className="menu-toggle" onClick={toggleMenu}>

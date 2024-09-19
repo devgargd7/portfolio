@@ -14,131 +14,102 @@
   font-weight: 600;
 }
 
-.timeline {
-  position: relative;
-  padding: 20px;
-  /* border-left: 2px dashed #228B22;  */
-}
-
 .jobs {
   padding: 20px 100px 40px 20px;
-}
-
-
-.job {
-  position: relative;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
-
-.job::before {
-  content: ">";
-  position: absolute;
-  left: -26px; 
-  top: 2px;
-  /* height: 10px; */
-  /* width: 10px; */
-  /* background-color: #001F3F; 
-  border-radius: 50%; 
-  box-shadow: 0 0 0 4px #001F3F;  */
-}
-
-.job h3 {
-  color: #228B22; 
-  font-size: 16px;
-  transition: color 0.3s ease;
-  margin-bottom: 0; 
-}
-
-.job h3 a {
-  color: #8B4513; 
-  transition: color 0.3s ease;
-}
-
-.job h3 a:hover {
-  color: #1A1A1D; 
-}
-
-.job .range {
-  color: #8892b0;
-  font-size: 0.9rem;
-  margin-top: 5px;
-}
-
-.job ul {
-  margin-top: 10px;
-  list-style-type: square;
-  margin-left: 20px;
-}
-
-.job ul li {
-  color: #8892b0;
 }
 
 .education {
   padding: 20px 20px 40px 100px;
 }
 
-.study {
-  text-align: right;
-}
-
-.edu-timeline {
-  position: relative;
-  padding: 20px;
-  /* border-right: 2px dashed #228B22;  */
-}
-
-
-.edu {
+.job, .edu {
   position: relative;
   margin-bottom: 20px;
   cursor: pointer;
 }
 
-.edu::after {
-
-  content: "<";
-  position: absolute;
-  right: -26px; 
-  top: 2px;
-  /* height: 10px; */
-  /* width: 10px; */
-  /* background-color: #001F3F; 
-  border-radius: 50%; 
-  box-shadow: 0 0 0 4px #001F3F;  */
+.toggle-icon {
+  margin-right: 10px; 
+  font-weight: bold;
+  font-size: 22px; 
+  color: #228B22; 
+  transition: transform 0.5s ease, color 0.3s ease; 
+  display: inline-block;
 }
 
-.edu h3 {
+.toggle-icon.expanded {
+  transform: rotate(180deg); 
+}
+
+.toggle-icon {
+  animation: swirl 0.5s ease-in-out; 
+}
+
+.edu h3:hover .toggle-icon {
+  color: #8B4513; 
+}
+
+.job h3:hover .toggle-icon {
+  color: #8B4513; 
+}
+
+.job h3 ,.edu h3 {
   color: #228B22; 
   font-size: 16px;
-  transition: color 0.3s ease;
+  /* transition: color 0.3s ease; */
   margin-bottom: 0; 
 }
 
-.edu h3 a {
+.job h3 a, .edu h3 a {
   color: #8B4513; 
   transition: color 0.3s ease;
 }
 
-.edu h3 a:hover {
-  color: #1A1A1D; 
+.job h3 a span:hover, .edu h3 a span:hover {
+  text-decoration: underline; 
+  transition: all 0.3s ease
 }
 
-.edu .range {
+.job .range,.edu .range {
   color: #8892b0;
   font-size: 0.9rem;
-  margin-top: 5px; 
-}
-
-.edu ul {
-  margin-top: 10px;
-  list-style-type: square;
+  margin-top: 5px;
   margin-left: 20px;
 }
 
-.edu ul li {
+.job ul, .edu ul {
+  margin-top: 10px;
+  list-style-type: square;
+  margin-left: 40px;
+}
+
+.job ul li, .edu ul li  {
   color: #8892b0;
+  list-style: none;
+}
+
+.job ul li::before {
+  content: "-";
+  position: absolute;
+  left: 20px;
+  color: #228B22;
+  font-size: small;
+}
+
+.study {
+  text-align: right;
+}
+
+@keyframes swirl {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(90deg); 
+  }
+  100% {
+    transform: rotate(180deg); 
+  }
 }
 
 @media (max-width: 768px) {

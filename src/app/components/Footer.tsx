@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <p>
-        <a href="https://github.com/yourusername/yourrepository" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/devgargd7/portfolio" target="_blank" rel="noopener noreferrer">
         Designed & Built by Dev Garg
         </a>
       </p>

@@ -1,6 +1,6 @@
 "use client";
-import React, { useRef } from 'react';
-import Header from "./components/Header";
+import React from 'react';
+import Header from './components/Header';
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
@@ -11,13 +11,12 @@ import Experience from './components/Experience';
 // import "./App.css";
 
 export default function App() {
-  const nameRef = useRef<HTMLHeadingElement>(null);
 
   return (
     <div>
-      <Header nameRef={nameRef} />
+      <Header />
       <main>
-        <Hero setNameRef={nameRef} />
+        <Hero />
         <About />
         <Experience />
         <Projects />

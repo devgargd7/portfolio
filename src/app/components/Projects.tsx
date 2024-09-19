@@ -18,7 +18,7 @@ const allProjects: Project[] = [
     name: "Agentic Self-Corrective RAG",
     description: "A multi-agent websearch-enabled Retreival Augment Generation system based on LLama3 to minimize hallucinations",
     tools: ["LangChain", "Ollama", "AWS"],
-    tags: ["LLMs","Gen-AI"],
+    tags: ["LLMs"],
     githubUrl: "https://github.com/devgargd7/CorrectiveRAG",
     liveUrl: ""
   },
@@ -42,7 +42,7 @@ const allProjects: Project[] = [
     name: "Handwriting Based Calculator",
     description: "A Calculator that understands your handwritting.",
     tools: ["Keras", "OpenCV", "Flask"],
-    tags: ["OCR","CV"],
+    tags: ["OCR","Vision"],
     githubUrl: "https://github.com/devgargd7/HandwrittingBasedCalculator",
     liveUrl: ""
   },
@@ -50,7 +50,7 @@ const allProjects: Project[] = [
     name: "Optimized CNN for Cifar10",
     description: "Implemented a paper to achieve fast training and high accuracy.",
     tools: ["PyTorch"],
-    tags: ["CV"],
+    tags: ["Vision"],
     githubUrl: "https://github.com/devgargd7/Cifar10CNN",
     liveUrl: ""
   },
@@ -62,17 +62,16 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/JWONNYLEAF/CADET-ACTIVITY-MANAGEMENT",
     liveUrl: ""
   },
-  // Add more projects as needed
 ];
 
 const Projects: React.FC = () => {
-  const [visibleProjects, setVisibleProjects] = useState<Project[]>(allProjects.slice(0, 3));
+  const [visibleProjects, setVisibleProjects] = useState<Project[]>(allProjects.slice(0, 4));
   const [showMore, setShowMore] = useState(false);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
-    setVisibleProjects(showMore ? allProjects.slice(0, 3) : allProjects);
+    setVisibleProjects(showMore ? allProjects.slice(0, 4) : allProjects);
   };
 
   const handleFilter = (tool: string) => {
@@ -83,13 +82,15 @@ const Projects: React.FC = () => {
     const filteredProjects = newFilters.length === 0 
       ? allProjects 
       : allProjects.filter(p => newFilters.every(f => p.tags.includes(f)));
-    setVisibleProjects(filteredProjects.slice(0, 3));
+    setVisibleProjects(filteredProjects.slice(0, 4));
     setShowMore(false);
   };
 
+  const noActiveFilters = activeFilters.length === 0;
+
   const clearFilters = () => {
     setActiveFilters([]);
-    setVisibleProjects(allProjects.slice(0, 3));
+    setVisibleProjects(allProjects.slice(0, 4));
     setShowMore(false);
   };
 
@@ -97,13 +98,19 @@ const Projects: React.FC = () => {
     <section id="projects" className="projects">
       <h2>Projects</h2>
       <div className="filter-buttons">
-        {activeFilters.map(filter => (
+        {noActiveFilters && (
+          <span className="filter-tag">#All</span> 
+        )}
+        {!noActiveFilters && activeFilters.map(filter => (
           <button key={filter} onClick={() => handleFilter(filter)} className="filter-tag">
             #{filter} <FaTimes />
           </button>
         ))}
         {activeFilters.length > 0 && (
           <button onClick={clearFilters} className="clear-filters">Clear Filters</button>
+        )}
+        {activeFilters.length == 0 && (
+          <button onClick={clearFilters} className="clear-filters">Click on #filters to add</button>
         )}
       </div>
       <div className="project-grid">
@@ -132,7 +139,7 @@ const Projects: React.FC = () => {
            </div>
         ))}
       </div>
-      {allProjects.length > 3 && (
+      {allProjects.length > 4 && (
         <button onClick={toggleShowMore} className="toggle-button">
           {showMore ? 'Show Less' : 'Show More'}
         </button>

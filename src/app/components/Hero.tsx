@@ -9,7 +9,7 @@ interface HeroProps {
   setNameRef: React.RefObject<HTMLHeadingElement>;
 }
 
-const Hero: React.FC<HeroProps> = ({ setNameRef }) => {
+const Hero: React.FC = () => {
 
   const [jobIndex, setJobIndex] = useState(0);
   const [jobTitle, setJobTitle] = useState('');
@@ -40,14 +40,14 @@ const Hero: React.FC<HeroProps> = ({ setNameRef }) => {
       setIsTyping(false);
       setTimeout(() => {
         setIsDeleting(true);
-        setDelta(200);
+        setDelta(100);
       }, 1000);
     } else if (isDeleting && currentText === '') {
       setIsDeleting(false);
       setIsTyping(true);
       setJobIndex((prevIndex) => (prevIndex + 1) % jobTitles.length);
       setLoopNum(loopNum + 1);
-      setDelta(500);
+      setDelta(200);
     }
   };
 
@@ -55,16 +55,11 @@ const Hero: React.FC<HeroProps> = ({ setNameRef }) => {
     <section id="hero" className="hero">
       <div className="content">
         <h1>Hey there, I&apos;m</h1>
-        <h2 className="big-heading" ref={setNameRef}>Dev Garg.</h2>
+        <h2 className="big-heading">Dev Garg.</h2>
         <h3 className="big-heading">I build tech for tomorrow&apos;s innovations.</h3>
         <p>
           I&apos;m a <span className="dynamic-job-title">{jobTitle}<span className="cursor">|</span></span>
         </p>
-        {/* <p>
-          I'm a software engineer based in Boston, MA specializing in building
-          exceptional, high-quality websites and applications.
-        </p> */}
-        {/* <a href="#projects" className="btn">Check out my work</a> */}
       </div>
     </section>
   );

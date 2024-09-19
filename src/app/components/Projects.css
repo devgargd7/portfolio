@@ -100,7 +100,7 @@
   /* border-radius: 5px; */
   /* padding: 5px 10px; */
   margin-right: 15px;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: background-color 0.3s;
   font-size: 12px;
   font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
@@ -112,8 +112,6 @@
 
 .toggle-button {
   margin-top: 10px;
-  display: flex;
-  text-align: flex;
 }
 
 .tool-tag:hover, .filter-tag:hover, .toggle-button:hover, .clear-filters:hover {

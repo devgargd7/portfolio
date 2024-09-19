@@ -21,6 +21,7 @@
 
 .logo {
   color: #001F3F;
+  cursor: pointer;
 }
 
 .nav {
@@ -43,6 +44,10 @@
   padding: 1rem;
   text-decoration: none;
   font-size: 1rem;
+}
+
+.nav-links li a:hover{
+  color: #228B22;
 }
 
 .menu-toggle {

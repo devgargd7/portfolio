@@ -33,19 +33,20 @@
 }
 
 .skills-section {
+  display: flex;
   margin-top: 20px;
 }
 
 .skills-tabs {
+  width: 33.33%; /* 1/3rd of the space */
   display: flex;
-  justify-content: space-between; /* Distributes space evenly between items */
-  margin-bottom: 20px;
-  position: relative;
+  flex-direction: column; /* Align tabs vertically */
+  margin: 0 30px;
 }
 
 .tab-item {
-  flex: 1; /* Each tab item takes equal space */
-  text-align: center; /* Center text inside each tab item */
+  /* flex: 1;  */
+  text-align: left;/* center; */
   background: none;
   border: none;
   color: #8892b0;
@@ -53,28 +54,54 @@
   cursor: pointer;
   font-size: 16px;
   transition: color 0.3s;
+  text-decoration: none;
   position: relative;
+  margin-bottom: 10px;
+  /* background-position: 0 100%;
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease; */
 }
 
-.tab-item:not(:last-child)::after {
+/* .tab-item::before {
   content: '|';
   color: #8892b0; 
-  position: absolute;
-  right: 0; 
-  top: 50%;
+  position: relative;
+  right: 10px; 
   transform: translateY(-50%);
-}
+} */
 
-.tab-item:hover, .tab-item.active {
+.tab-item.active {
   color: #228B22;
+  background-color: rgba(34, 139, 34, 0.1);
+  /* border-left: #228B22; */
 }
 
+.tab-item::after {
+  content: ''; 
+  position: absolute;
+  width: 0; 
+  height: 2px; 
+  bottom: 0;
+  left: 0;
+  background-color: transparent; 
+  transition: width 0.3s ease, background-color 0.3s ease; 
+}
+
+.tab-item:hover::after {
+  width: 100%; 
+  background-color: #228B22; 
+}
 
 .skills-list {
+  width: 66.66%;
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-auto-rows: min-content; 
+  gap: 10px;
   list-style: none;
-  padding: 0 100px;
+  padding: 30px 30px;
+  min-height: 30vh;
 }
 
 .skills-list li {
@@ -85,7 +112,7 @@
 }
 
 .skills-list li::before {
-  content: "▹";
+  content: "-";
   position: absolute;
   left: 0px;
   color: #228B22;
@@ -98,6 +125,7 @@
     padding: 100px 0;
   }
   .skills-list {
-    padding: 0 30px;
+    padding: 0 50px;
+    grid-template-columns: repeat(1, 1fr); 
   }
 }
