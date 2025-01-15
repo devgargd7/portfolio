@@ -31,7 +31,7 @@ const Header: React.FC = () => {
     setJobTitle(currentText);
 
     if (isTyping) {
-      setDelta(_ => 200 - Math.random() * 100);
+      setDelta(200 - Math.random() * 100);
     }
 
     if (!isDeleting && currentText === fullText) {

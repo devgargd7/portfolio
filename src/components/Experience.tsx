@@ -1,12 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { MdArrowOutward } from "react-icons/md";
 
 const Experience = () => {
-  const [expandedJobs, setExpandedJobs] = useState<{ [key: number]: boolean }>({});
-  const [expandedEducations, setExpandedEducations] = useState<{ [key: number]: boolean }>({});
-
   const jobs = [
     {
       company: "Societe Generale",
