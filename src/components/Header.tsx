@@ -55,7 +55,7 @@ const Header: React.FC = () => {
         <span
           className="mr-2 left-0 h-2 w-2 rounded-full bg-teal-300 animate-blink"
         ></span>
-          Actively looking for roles
+          Actively looking for opportunities
         </div>
         <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-7xl"><a href="/">Dev Garg</a></h1>
         <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">

@@ -47,7 +47,7 @@ const ProjectComponent: React.FC<ProjectProps> = ({
               >
                 <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                 <span>
-                  {name}<MdArrowOutward className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1" />
+                  {name}<MdArrowOutward className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none -translate-y-0.5" />
                 </span>
               </a>
             </h3>
@@ -55,7 +55,7 @@ const ProjectComponent: React.FC<ProjectProps> = ({
             <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
               {tools.map((tool, index) => (
                 <li key={index} className="mr-1.5 mt-2">
-                  <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                  <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-500">
                     {tool}
                   </div>
                 </li>
