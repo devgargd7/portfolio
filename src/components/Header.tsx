@@ -1,9 +1,10 @@
 "use client"
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from "./Nav";
 import SocialLinks from "./SocialLinks";
 import { MdArrowOutward } from 'react-icons/md';
+import Link from 'next/link';
 
 const jobTitles = ["Machine Learning Engineer", "Software Engineer", "Data Engineer"];
 
@@ -16,7 +17,7 @@ const Header: React.FC = () => {
   const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
-    let ticker = setInterval(() => {
+    const ticker = setInterval(() => {
       tick();
     }, delta);
 
@@ -25,12 +26,12 @@ const Header: React.FC = () => {
 
   const tick = () => {
     const fullText = jobTitles[jobIndex];
-    let currentText = isDeleting ? fullText.substring(0, jobTitle.length - 1) : fullText.substring(0, jobTitle.length + 1);
+    const currentText = isDeleting ? fullText.substring(0, jobTitle.length - 1) : fullText.substring(0, jobTitle.length + 1);
 
     setJobTitle(currentText);
 
     if (isTyping) {
-      setDelta(prevDelta => 200 - Math.random() * 100);
+      setDelta(_ => 200 - Math.random() * 100);
     }
 
     if (!isDeleting && currentText === fullText) {
@@ -57,12 +58,10 @@ const Header: React.FC = () => {
         ></span>
           Actively looking for opportunities
         </div>
-        <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-7xl"><a href="/">Dev Garg</a></h1>
+        <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-7xl"><Link href="/">Dev Garg</Link></h1>
         <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
           {jobTitle}<span className="animate-blink">|</span>
         </h2>
-        {/* <p className="mt-4 max-w-xs leading-normal">I build accessible, pixel-perfect digital experiences for the web.</p> */}
-        {/* <Navbar/> */}
         <Nav/>
         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex mr-1.5 lg:mt-2 mt-6 items-center rounded-full bg-teal-400/10 hover:bg-teal-400/30 px-3 py-1 text-xs font-medium leading-5 text-teal-300 hover:text-teal-200">
           <span className='p-2'>Resume <MdArrowOutward className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1"/></span>

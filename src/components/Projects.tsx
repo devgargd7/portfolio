@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-// import './Projects.css';
-import { FaGithub, FaTimes } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 import ProjectComponent from './Project';
 
 interface Project {

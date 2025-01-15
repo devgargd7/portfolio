@@ -7,20 +7,6 @@ const Experience = () => {
   const [expandedJobs, setExpandedJobs] = useState<{ [key: number]: boolean }>({});
   const [expandedEducations, setExpandedEducations] = useState<{ [key: number]: boolean }>({});
 
-  const toggleJob = (index: number) => {
-    setExpandedJobs({
-      ...expandedJobs,
-      [index]: !expandedJobs[index]
-    });
-  };
-
-  const toggleEducation = (index: number) => {
-    setExpandedEducations({
-      ...expandedEducations,
-      [index]: !expandedEducations[index]
-    });
-  };
-
   const jobs = [
     {
       company: "Societe Generale",

@@ -40,7 +40,7 @@ const ProjectComponent: React.FC<ProjectProps> = ({
           <div className="z-10 sm:order-2 sm:col-span-6">
             <h3>
               <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300  group/link text-base"
-                href={githubUrl}
+                href={liveUrl===undefined ? githubUrl : liveUrl}
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label={`${name} (opens in a new tab)`}
