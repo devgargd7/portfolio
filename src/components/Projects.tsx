@@ -15,6 +15,22 @@ interface Project {
 
 const allProjects: Project[] = [
   {
+    name: "EduPandora",
+    description: "Serving 400+ students with a ChatGPT-based Teaching Assistant that generate quizes and provide feedbacks based on the course material uploaded by the instructors.",
+    tools: ["ChatGPT", "React", "AWS", "LangChain"],
+    tags: ["full-stack", "LLMs"],
+    githubUrl: "",
+    liveUrl: "https://www.eduPandora.com"
+  },
+  {
+    name: "Attention-based Model Architecture for Citation Graph",
+    description: "A novel citation-aware model for research papers with LoRA fine-tuned LLaMA that significantly improve perplexity and summarization.",
+    tools: ["PyTorch"],
+    tags: ["LLMs"],
+    githubUrl: "",
+    liveUrl: ""
+  },
+  {
     name: "Agentic Self-Corrective RAG",
     description: "A multi-agent websearch-enabled Retreival Augment Generation system based on LLama3 to minimize hallucinations",
     tools: ["LangChain", "Ollama", "AWS"],
@@ -28,6 +44,14 @@ const allProjects: Project[] = [
     tools: ["BERT", "Express", "AWS"],
     tags: ["Rec-Sys", "NLP"],
     githubUrl: "https://github.com/devgargd7/Newsify",
+    liveUrl: ""
+  },
+  {
+    name: "Optimized CNN for Cifar10",
+    description: "Implemented a paper to achieve fast training and high accuracy.",
+    tools: ["PyTorch"],
+    tags: ["Vision"],
+    githubUrl: "https://github.com/devgargd7/Cifar10CNN",
     liveUrl: ""
   },
   {
@@ -47,14 +71,6 @@ const allProjects: Project[] = [
     liveUrl: ""
   },
   {
-    name: "Optimized CNN for Cifar10",
-    description: "Implemented a paper to achieve fast training and high accuracy.",
-    tools: ["PyTorch"],
-    tags: ["Vision"],
-    githubUrl: "https://github.com/devgargd7/Cifar10CNN",
-    liveUrl: ""
-  },
-  {
     name: "TAMU Cadet Activity Management",
     description: "An app for TAMU corps, made with high software quality and love.",
     tools: ["Ruby on Rails", "JavaScript", "Heroku"],
@@ -65,13 +81,13 @@ const allProjects: Project[] = [
 ];
 
 const Projects: React.FC = () => {
-  const [visibleProjects, setVisibleProjects] = useState<Project[]>(allProjects.slice(0, 4));
+  const [visibleProjects, setVisibleProjects] = useState<Project[]>(allProjects.slice(0, 5));
   const [showMore, setShowMore] = useState(false);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
-    setVisibleProjects(showMore ? allProjects.slice(0, 4) : allProjects);
+    setVisibleProjects(showMore ? allProjects.slice(0, 5) : allProjects);
   };
 
   const handleFilter = (tool: string) => {
@@ -82,7 +98,7 @@ const Projects: React.FC = () => {
     const filteredProjects = newFilters.length === 0
       ? allProjects
       : allProjects.filter(p => newFilters.every(f => p.tags.includes(f)));
-    setVisibleProjects(filteredProjects.slice(0, 4));
+    setVisibleProjects(filteredProjects.slice(0, 5));
     setShowMore(false);
   };
 
@@ -99,14 +115,14 @@ const Projects: React.FC = () => {
       <div className="sticky top-0 z-30 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
         <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">PROJECTS</h2>
       </div>
-      <div className="filter-buttons mt-4 sm:mb-8 mb-4 mx-2 flex justify-between">
+      <div className="filter-buttons mt-4 sm:mb-8 mb-4 sm:mx-2 flex justify-between text-xs">
         <div className='group'>
           {noActiveFilters && (
             <span className="filter-tag">#All</span>
           )}
           {!noActiveFilters && activeFilters.map(filter => (
             <button key={filter} onClick={() => handleFilter(filter)} className="filter-tag mr-2">
-              #{filter}<FaTimes className='inline-block group-hover:text-teal-300 ml-0.5'/>
+              #{filter}<FaTimes className='inline-block group-hover:text-teal-300 ml-0.5 -translate-y-0.5'/>
             </button>
           ))}
         </div>
