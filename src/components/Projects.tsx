@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import ProjectComponent from './Project';
 
@@ -16,8 +16,8 @@ interface Project {
 const allProjects: Project[] = [
   {
     name: "EduPandora",
-    description: "Serving 400+ students with a ChatGPT-based Teaching Assistant that generate quizes and provide feedbacks based on the course material uploaded by the instructors.",
-    tools: ["ChatGPT", "React", "AWS", "LangChain"],
+    description: "Serving 400+ students with a GPT-based Teaching Assistant that generate quizes and provide feedbacks based on the course material uploaded by the instructors.",
+    tools: ["OpenAI", "React", "AWS", "LangChain"],
     tags: ["full-stack", "LLMs"],
     githubUrl: "",
     liveUrl: "https://www.eduPandora.com"
@@ -84,9 +84,32 @@ const Projects: React.FC = () => {
   const [visibleProjects, setVisibleProjects] = useState<Project[]>(allProjects.slice(0, 5));
   const [showMore, setShowMore] = useState(false);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    // Get the current theme from the document
+    const currentTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
+    setTheme(currentTheme);
+
+    // Listen for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-theme') {
+          const newTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
+          setTheme(newTheme);
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const toggleShowMore = () => {
-    setShowMore(!showMore);
+    clearFilters();
     setVisibleProjects(showMore ? allProjects.slice(0, 5) : allProjects);
   };
 
@@ -106,59 +129,36 @@ const Projects: React.FC = () => {
 
   const clearFilters = () => {
     setActiveFilters([]);
-    setVisibleProjects(allProjects.slice(0, 4));
-    setShowMore(false);
+    setVisibleProjects(allProjects.slice(0, 5));
+    setShowMore(!showMore);
   };
 
   return (
     <section id="projects" className="projects mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
-      <div className="sticky top-0 z-30 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">PROJECTS</h2>
+      <div className={`sticky top-0 z-30 -mx-6 mb-4 w-screen ${theme === 'dark' ? 'bg-slate-900/75' : 'bg-slate-50/75'} px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0`}>
+        <h2 className={`text-sm font-bold uppercase tracking-widest ${theme === 'dark' ? 'text-slate-200' : 'text-gray-800'} lg:sr-only`}>PROJECTS</h2>
       </div>
       <div className="filter-buttons mt-4 sm:mb-8 mb-4 sm:mx-2 flex justify-between text-xs">
         <div className='group'>
           {noActiveFilters && (
-            <span className="filter-tag">#All</span>
+            <span className={`filter-tag ${theme === 'dark' ? 'text-teal-300' : 'text-teal-700'}`}>#All</span>
           )}
           {!noActiveFilters && activeFilters.map(filter => (
-            <button key={filter} onClick={() => handleFilter(filter)} className="filter-tag mr-2">
-              #{filter}<FaTimes className='inline-block group-hover:text-teal-300 ml-0.5 -translate-y-0.5'/>
+            <button key={filter} onClick={() => handleFilter(filter)} className={`filter-tag mr-2 ${theme === 'dark' ? 'text-teal-300' : 'text-teal-700'}`}>
+              #{filter}<FaTimes className={`inline-block ${theme === 'dark' ? 'group-hover:text-teal-300' : 'group-hover:text-teal-700'} ml-0.5 -translate-y-0.5`}/>
             </button>
           ))}
         </div>
         <div>
           {activeFilters.length > 0 && (
-            <button onClick={clearFilters} className="clear-filters">Clear Filters</button>
+            <button onClick={clearFilters} className={`clear-filters ${theme === 'dark' ? 'text-slate-400 hover:text-slate-200' : 'text-gray-600 hover:text-gray-800'}`}>Clear Filters</button>
           )}
           {activeFilters.length == 0 && (
-            <button onClick={clearFilters} className="clear-filters">Click on #filters to add</button>
+            <button onClick={clearFilters} className={`clear-filters ${theme === 'dark' ? 'text-slate-400 hover:text-slate-200' : 'text-gray-600 hover:text-gray-800'}`}>Click on #filters to add</button>
           )}
         </div>
       </div>
       <div className="project-grid">
-        {/* {visibleProjects.map((project, index) => (
-          <div key={index} className="card" rel="noopener noreferrer">
-            <div className="card-content">
-              <div className="github-button">
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                  <FaGithub size={20} />
-                </a>
-              </div>
-              <div className="tools-used">{project.tags.map(tag =>
-                <button key={tag} onClick={(e) => { e.stopPropagation(); handleFilter(tag); }} className="tool-tag">#{tag}</button>
-              )}</div>
-              <h3>{project.name}</h3>
-              <p>{project.description}</p>
-              <div className="tools-used">
-                <p>
-                  {project.tools.map((tool, index) =>
-                    <span key={index} className="tool">{tool}</span>
-                  )}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))} */}
         <ul className='group/list'>
         {visibleProjects.map((project, index) => (
           <ProjectComponent
@@ -175,7 +175,7 @@ const Projects: React.FC = () => {
         </ul>
       </div>
       {allProjects.length > 4 && (
-        <button onClick={toggleShowMore} className="toggle-button">
+        <button onClick={toggleShowMore} className={`toggle-button text-xs ${theme === 'dark' ? 'text-teal-300 hover:text-teal-200' : 'text-teal-700 hover:text-teal-800'}`}>
           {showMore ? 'Show Less' : 'Show More'}
         </button>
       )}
