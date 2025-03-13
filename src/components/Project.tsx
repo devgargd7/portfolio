@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { MdArrowOutward } from "react-icons/md";
+import { useTheme } from "./ThemeProvider";
 
 interface ProjectProps {
   name: string;
@@ -22,29 +23,7 @@ const ProjectComponent: React.FC<ProjectProps> = ({
   liveUrl,
   onTagClick,
 }) => {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    // Get the current theme from the document
-    const currentTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-    setTheme(currentTheme);
-
-    // Listen for theme changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'data-theme') {
-          const newTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-          setTheme(newTheme);
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, { attributes: true });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const { theme } = useTheme();
 
   let url = undefined;
   if (githubUrl === "") {

@@ -1,32 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { MdArrowOutward } from "react-icons/md";
+import { useTheme } from './ThemeProvider';
 
 const Experience = () => {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    // Get the current theme from the document
-    const currentTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-    setTheme(currentTheme);
-
-    // Listen for theme changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'data-theme') {
-          const newTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-          setTheme(newTheme);
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, { attributes: true });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const { theme } = useTheme();
 
   const jobs = [
     {

@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import ProjectComponent from './Project';
+import { useTheme } from './ThemeProvider';
 
 interface Project {
   name: string;
@@ -84,29 +85,7 @@ const Projects: React.FC = () => {
   const [visibleProjects, setVisibleProjects] = useState<Project[]>(allProjects.slice(0, 5));
   const [showMore, setShowMore] = useState(false);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    // Get the current theme from the document
-    const currentTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-    setTheme(currentTheme);
-
-    // Listen for theme changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'data-theme') {
-          const newTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-          setTheme(newTheme);
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, { attributes: true });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const { theme } = useTheme();
 
   const toggleShowMore = () => {
     clearFilters();
@@ -175,7 +154,7 @@ const Projects: React.FC = () => {
         </ul>
       </div>
       {allProjects.length > 4 && (
-        <button onClick={toggleShowMore} className={`toggle-button text-xs ${theme === 'dark' ? 'text-teal-300 hover:text-teal-200' : 'text-teal-700 hover:text-teal-800'}`}>
+        <button onClick={toggleShowMore} className={`justify-self-center flex toggle-button text-xs ${theme === 'dark' ? 'text-teal-300 hover:text-teal-200' : 'text-teal-700 hover:text-teal-800'}`}>
           {showMore ? 'Show Less' : 'Show More'}
         </button>
       )}

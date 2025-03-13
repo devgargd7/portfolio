@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import SocialLinks from "./SocialLinks";
 import { MdArrowOutward } from 'react-icons/md';
 import Link from 'next/link';
+import { useTheme } from './ThemeProvider';
 
 const jobTitles = ["Machine Learning Engineer", "Software Engineer", "Data Engineer"];
 
@@ -15,29 +16,7 @@ const Header: React.FC = () => {
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [loopNum, setLoopNum] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    // Get the current theme from the document
-    const currentTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-    setTheme(currentTheme);
-
-    // Listen for theme changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'data-theme') {
-          const newTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-          setTheme(newTheme);
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, { attributes: true });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const ticker = setInterval(() => {

@@ -1,30 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useTheme } from './ThemeProvider';
 
 const Nav = () => {
   const [activeSection, setActiveSection] = useState('about');
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    // Get the current theme from the document
-    const currentTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-    setTheme(currentTheme);
-
-    // Listen for theme changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'data-theme') {
-          const newTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-          setTheme(newTheme);
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, { attributes: true });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
@@ -83,6 +62,12 @@ const Nav = () => {
           <a className={`group flex items-center py-3 ${activeSection === 'projects' ? 'active' : ''}`} href="#projects">
             <span className={getNavIndicatorClasses(activeSection === 'projects')}></span>
             <span className={getNavTextClasses(activeSection === 'projects')}>Projects</span>
+          </a>
+        </li>
+        <li>
+          <a className={`group flex items-center py-3 ${activeSection === 'blogs' ? 'active' : ''}`} href="#blogs">
+            <span className={getNavIndicatorClasses(activeSection === 'blogs')}></span>
+            <span className={getNavTextClasses(activeSection === 'blogs')}>Blogs</span>
           </a>
         </li>
       </ul>

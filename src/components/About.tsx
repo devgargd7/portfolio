@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useTheme } from './ThemeProvider';
 // import './About.css';
 
 // Define a type for the skills categories to ensure type safety
@@ -18,29 +19,7 @@ const skills: Skills = {
 
 const About: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<keyof Skills>('Languages');
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    // Get the current theme from the document
-    const currentTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-    setTheme(currentTheme);
-
-    // Listen for theme changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'data-theme') {
-          const newTheme = document.documentElement.getAttribute('data-theme') as "dark" | "light" || "dark";
-          setTheme(newTheme);
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, { attributes: true });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const { theme } = useTheme();
 
   return (
     <section id="about" className="about mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">

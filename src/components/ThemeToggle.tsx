@@ -40,8 +40,3 @@ export default function ThemeToggle() {
     />
   );
 }
-    // <button 
-    //   onClick={toggleTheme} 
-    //   className="fixed top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-md shadow-md dark:bg-gray-200 dark:text-black">
-    //   {theme === "dark" ? "Light Mode" : "Dark Mode"}
-    // </button>
