@@ -22,7 +22,7 @@ export default function ThemeToggle() {
     const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     
     const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
-    setTheme(initialTheme);
+    setTheme(initialTheme as "dark" | "light");
   }, []);
 
   useEffect(() => {
