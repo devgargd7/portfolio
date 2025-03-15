@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { MdArrowOutward } from "react-icons/md";
 import { useTheme } from "./ThemeProvider";
 
