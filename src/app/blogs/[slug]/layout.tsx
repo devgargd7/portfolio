@@ -1,7 +1,6 @@
 "use client";
 
 import ThemeProvider from "@/components/ThemeProvider";
-import ThemeToggle from "@/components/ThemeToggle";
 
 export default function BlogLayout({
   children,
@@ -10,7 +9,6 @@ export default function BlogLayout({
 }) {
   return (
     <ThemeProvider>
-      <ThemeToggle />
       {children}
     </ThemeProvider>
   );

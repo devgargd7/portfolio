@@ -9,22 +9,35 @@ const Experience = () => {
 
   const jobs = [
     {
-      company: "Societe Generale",
-      title: "Software Engineer",
-      range: "June 2021 - December 2023",
+      company: "Texas A&M Engineering Experiment Station (TEES)",
+      title: "Student Machine Learning Engineer",
+      range: "Nov 2024 - Present",
       description: [
-        "Worked on applications for counter party credit risk exposure calculation leveraging Big Data technologies.",
-        "Won Spot award for being an excellent team player.",
-        "Enhanced autoscaling on Azure Datalake to save €XX,XXX per quarter.",
-        "Developed several alerting and monitoring features, scripts using Scala and Spark improving productivity of the team.",
-        "Mentored new teammates and contributed to every phase of the Software Development Lifecycle, from requirement gathering/data analysis to deployment and prod support.",
+        "Architected an AI-driven e-learning platform using AWS (DynamoDB, EC2, S3), React/NextJS, OpenAI APIs, and Pinecone, delivering personalized learning to 400+ students via real-time ML-powered features.",
+        "Developed RAG-based TA chatbot and automated question generation pipelines with LangChain, improving question relevance by 25%.",
+        "Engineered and deployed scalable data and AI pipelines, integrating transcript extraction and performance analytics.",
       ],
-      url: "https://www.societegenerale.com/en",
-      tools: ["Java", "Spring Boot", "Apache Spark", "Kafka", "ElasticSearch", "Jenkins", "SQL", "Azure"]
+      url: "https://www.encando.com/",
+      tools: ["AWS", "DynamoDB", "EC2", "S3", "React", "NextJS", "OpenAI APIs", "Pinecone"],
     },
     {
       company: "Societe Generale",
-      title: "Software Engineer Intern",
+      title: "Software Engineer (Data)",
+      range: "June 2021 - December 2023",
+      description: [
+        "Led development of scalable data processing systems for credit risk exposure analysis, leveraging Big Data technologies to enable high-volume (Million+ rows/day) data ingestion and transformation for downstream analytics.",
+        "Won Spot award for being an excellent team player.",
+        "Enhanced autoscaling on Azure Datalake to save €XX,XXX per quarter.",
+        "Developed several alerting and monitoring features, scripts using Scala and Spark improving productivity of the team.",
+        "Accelerated system validation by 50\% through automated regression testing.",
+        "Mentored new teammates and contributed to every phase of the Software Development Lifecycle, from requirement gathering/data analysis to deployment and prod support.",
+      ],
+      url: "https://www.societegenerale.com/en",
+      tools: ["Java", "Spring Boot", "Apache Spark", "Kafka", "ElasticSearch", "Jenkins", "SQL", "Azure", "Scala"]
+    },
+    {
+      company: "Societe Generale",
+      title: "Data Scientist Intern",
       range: "May 2020 - June 2020",
       description: [
         "Developed an ML-based incident resolution recommendation system, reducing operational risks and improving response times by 38%. Worked closely with cross-functional teams to design, develop, and test the MVP, meeting strict deadlines.",

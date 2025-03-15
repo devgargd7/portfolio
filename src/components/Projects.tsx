@@ -16,35 +16,28 @@ interface Project {
 
 const allProjects: Project[] = [
   {
-    name: "EduPandora",
-    description: "Serving 400+ students with a GPT-based Teaching Assistant that generate quizes and provide feedbacks based on the course material uploaded by the instructors.",
-    tools: ["OpenAI", "React", "AWS", "LangChain"],
-    tags: ["full-stack", "LLMs"],
-    githubUrl: "",
-    liveUrl: "https://www.eduPandora.com"
-  },
-  {
-    name: "Attention-based Model Architecture for Citation Graph",
-    description: "A novel citation-aware model for research papers with LoRA fine-tuned LLaMA that significantly improve perplexity and summarization.",
-    tools: ["PyTorch"],
+    name: "PaperFormer: A Citation-Graph Enhanced Language Model for Scientific Applications",
+    description: "Rithik Kapoor*, Dev Garg*, Ruihong Huang. [Under Review at Association for Computational Linguistics (ACL 2025)]. \
+A novel citation-aware model for research papers with LoRA fine-tuned LLaMA that achieves 51% perplexity reduction and SOTA summarization improvement.",
+    tools: ["PyTorch", "Ray", "LLaMA"],
     tags: ["LLMs"],
     githubUrl: "",
-    liveUrl: ""
-  },
-  {
-    name: "Agentic Self-Corrective RAG",
-    description: "A multi-agent websearch-enabled Retreival Augment Generation system based on LLama3 to minimize hallucinations",
-    tools: ["LangChain", "Ollama", "AWS"],
-    tags: ["LLMs"],
-    githubUrl: "https://github.com/devgargd7/CorrectiveRAG",
     liveUrl: ""
   },
   {
     name: "News Aggregation and Recommendation System",
-    description: "Personalized News recommendations served from all around the globe.",
-    tools: ["BERT", "Express", "AWS"],
+    description: "A distributed, AI-driven platform that ingests and clusters news from multiple sources, generates real-time summaries, and delivers personalized, bias-aware recommendations based on user interactions. The system integrates MLOps for model monitoring and retraining, ensuring scalable, low-latency content delivery.",
+    tools: [ "Kafka", "Spark", "FAISS", "MLflow", "Kubeflow", "Redis", "PostgreSQL", "Elasticsearch" , "ETL"],
     tags: ["Rec-Sys", "NLP"],
     githubUrl: "https://github.com/devgargd7/Newsify",
+    liveUrl: ""
+  },
+  {
+    name: "Agentic Self-Corrective RAG",
+    description: "A multi-agent websearch-enabled Retreival Augment Generation system based on LLama3 to minimize hallucinations. 20% increase in answer relevance and a 5% enhancement in faithfulness.",
+    tools: ["LangChain", "Ollama", "AWS", "Docker"],
+    tags: ["LLMs"],
+    githubUrl: "https://github.com/devgargd7/CorrectiveRAG",
     liveUrl: ""
   },
   {
@@ -79,6 +72,14 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/JWONNYLEAF/CADET-ACTIVITY-MANAGEMENT",
     liveUrl: ""
   },
+  {
+    name: "Low-Level OS Development and Kernel Programming (CSCE-611)",
+    description: "Developed a demand-paging virtual memory system with frame management, page table handling, and a custom page fault handler in C++, optimizing memory allocation and access in an x86-based kernel. Implemented a kernel-level thread scheduler and non-blocking disk driver, enabling preemptive multitasking, efficient context switching, and disk I/O without busy-waiting, improving system responsiveness.",
+    tools: ["C++"],
+    tags: ["OS"],
+    githubUrl: "",
+    liveUrl: ""
+  }
 ];
 
 const Projects: React.FC = () => {
