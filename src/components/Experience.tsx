@@ -10,7 +10,7 @@ const Experience = () => {
   const jobs = [
     {
       company: "Texas A&M Engineering Experiment Station (TEES)",
-      title: "Student Machine Learning Engineer",
+      title: "Student Assistant",
       range: "Nov 2024 - Present",
       description: [
         "Architected an AI-driven e-learning platform using AWS (DynamoDB, EC2, S3), React/NextJS, OpenAI APIs, and Pinecone, delivering personalized learning to 400+ students via real-time ML-powered features.",

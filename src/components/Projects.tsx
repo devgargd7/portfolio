@@ -17,7 +17,7 @@ interface Project {
 const allProjects: Project[] = [
   {
     name: "PaperFormer: A Citation-Graph Enhanced Language Model for Scientific Applications",
-    description: "Rithik Kapoor*, Dev Garg*, Ruihong Huang. [Under Review at Association for Computational Linguistics (ACL 2025)]. \
+    description: "Rithik Kapoor, Dev Garg, Ruihong Huang. [Under Review at Association for Computational Linguistics (ACL 2025)]. \
 A novel citation-aware model for research papers with LoRA fine-tuned LLaMA that achieves 51% perplexity reduction and SOTA summarization improvement.",
     tools: ["PyTorch", "Ray", "LLaMA"],
     tags: ["LLMs"],
