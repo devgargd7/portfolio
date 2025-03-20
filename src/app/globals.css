@@ -106,3 +106,24 @@ html[data-theme="light"] .active .nav-indicator {
 html[data-theme="light"] .active .nav-text {
   color: rgb(31 41 55/var(--tw-text-opacity))
 }
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+/* h2:before {
+  content: "#";
+  color: teal;
+  font-size: xx-large;
+  padding: 5px;
+  font-weight: lighter;
+  margin-left: -20px;
+} */

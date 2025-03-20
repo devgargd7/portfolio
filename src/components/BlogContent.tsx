@@ -113,7 +113,7 @@ export default function BlogContent({ blog }: BlogContentProps) {
                 <MdArrowBack className="inline-block h-8 w-8 shrink-0 transition-transform hover:-translate-x-1 motion-reduce:transition-none mr-2" />
               </Link> 
               <div className={`rounded-lg max-h-[60%] flex ${theme === 'dark' ? 'bg-slate-800/50 border border-slate-700' : 'bg-slate-100/50 border border-slate-200'}`}>
-                <nav className="p-4 toc overflow-auto w-full">
+                <nav className="p-4 toc overflow-auto w-full no-scrollbar"> 
                   <ul className="space-y-2 text-sm overflow-auto">
                     {tocItems.map((item) => (
                       <li key={item.id}>

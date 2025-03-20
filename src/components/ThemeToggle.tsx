@@ -63,7 +63,7 @@ export default function ThemeToggle() {
     <DarkModeSwitch
       style={{
         position: 'fixed',
-        bottom: '1rem',
+        top: '1rem',
         right: '1rem',
         cursor: 'pointer',
         zIndex: '1000',
