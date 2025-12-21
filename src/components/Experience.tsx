@@ -9,13 +9,15 @@ const Experience = () => {
 
   const jobs = [
     {
-      company: "Texas A&M Engineering Experiment Station (TEES)",
-      title: "Student Assistant",
-      range: "Nov 2024 - Present",
+      company: "Encando.AI",
+      title: "Senior Software Engineer",
+      range: "May 2025 - Present",
       description: [
-        "Architected an AI-driven e-learning platform using AWS (DynamoDB, EC2, S3), React/NextJS, OpenAI APIs, and Pinecone, delivering personalized learning to 400+ students via real-time ML-powered features.",
-        "Developed RAG-based TA chatbot and automated question generation pipelines with LangChain, improving question relevance by 25%.",
-        "Engineered and deployed scalable data and AI pipelines, integrating transcript extraction and performance analytics.",
+        "Architected a scalable backend from the ground up for an AI-first Learning Management Platform, achieving support for over 5,000 active students within 5 months by leveraging AWS services for high availability.",
+        "Ensured high-quality model performance for a multi-stage agentic RAG pipeline by designing and implementing a rigorous evaluation framework, which improved response relevance by 20% and reduced hallucinations by 25%",
+        "Drove improvements in development processes by leading a team of 5 engineers, establishing best practices for code reviews, testing, and agile methodologies to increase deployment frequency",
+        "Achieved significant operational efficiency by reducing monthly infrastructure costs by 15% through strategic AWS resource optimization and cutting API costs by 35% via prompt engineering and model selection.",
+        "Ensured product compliance with WCAG 2.1 AA standards and ADA Title II by implementing accessible React components and conducting regular audits, improving usability for all students.",
       ],
       url: "https://www.encando.com/",
       tools: ["AWS", "DynamoDB", "EC2", "S3", "React", "NextJS", "OpenAI APIs", "Pinecone"],
@@ -23,7 +25,7 @@ const Experience = () => {
     {
       company: "Societe Generale",
       title: "Software Engineer (Data)",
-      range: "June 2021 - December 2023",
+      range: "May 2021 - December 2023",
       description: [
         "Led development of scalable data processing systems for credit risk exposure analysis, leveraging Big Data technologies to enable high-volume (Million+ rows/day) data ingestion and transformation for downstream analytics.",
         "Won Spot award for being an excellent team player.",

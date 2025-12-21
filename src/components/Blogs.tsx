@@ -16,6 +16,13 @@ interface BlogPost {
 // Hardcoded blog data
 const allBlogsData: BlogPost[] = [
   {
+    title: "LLMOps: A Comprehensive Guide",
+    description: "A comprehensive guide to LLMOps, including the latest advancements in the field and best practices for building and deploying LLMs.",
+    slug: "LLMOps",
+    date: "December, 2025",
+    tags: ["LLMs", "MLOps"]
+  },
+  {
     title: "Designing Data Intensive Applications: Notes",
     description: "My notes on the book Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems.",
     slug: "Designing_Data_Intensive_Applications",
