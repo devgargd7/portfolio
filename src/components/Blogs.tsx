@@ -26,7 +26,7 @@ const allBlogsData: BlogPost[] = [
     title: "Designing Data Intensive Applications: Notes",
     description: "My notes on the book Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems.",
     slug: "Designing_Data_Intensive_Applications",
-    date: "Feburary, 2023",
+    date: "February, 2023",
     tags: ["System Design", "Notes"]
   },
 ];

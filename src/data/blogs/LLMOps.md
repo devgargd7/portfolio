@@ -1,3 +1,10 @@
+---
+title: "LLMOps: A Comprehensive Guide"
+date: "December, 2025"
+tags: ["LLMs", "MLOps"]
+description: "A comprehensive guide to LLMOps, including the latest advancements in the field and best practices for building and deploying LLMs."
+---
+
 # MLOps and Production Machine Learning Notes
 
 Here are the structured MLOps notes based on the provided document, refined for clarity and corrected for spelling and grammar.

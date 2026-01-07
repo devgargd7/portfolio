@@ -34,7 +34,7 @@ A novel citation-aware model for research papers with LoRA fine-tuned LLaMA that
   },
   {
     name: "Agentic Self-Corrective RAG",
-    description: "A multi-agent websearch-enabled Retreival Augment Generation system based on LLama3 to minimize hallucinations. 20% increase in answer relevance and a 5% enhancement in faithfulness.",
+    description: "A multi-agent websearch-enabled Retreival Augmented Generation system based on LLama3 to minimize hallucinations. 20% increase in answer relevance and a 5% enhancement in faithfulness.",
     tools: ["LangChain", "Ollama", "AWS", "Docker"],
     tags: ["LLMs"],
     githubUrl: "https://github.com/devgargd7/CorrectiveRAG",

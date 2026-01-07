@@ -1,6 +1,6 @@
 ---
 title: "Designing Data-Intensive Applications: My Notes"
-date: "Feburary, 2023"
+date: "February, 2023"
 tags: ["System Design", "Notes"]
 ---
 
@@ -14,13 +14,13 @@ tags: ["System Design", "Notes"]
 - Scalability
 - Maintainability
 
-
 ### Reliability
 
 Continuing to work correctly, even when things go wrong.
-  - **Fault**: A component of the system fails deviating from specifications.
-  - **Failure**: When system as a whole stops providing the required service to users.
-  - **Netflix Chaos Monkey Test**: Deliberately inducing faults.
+
+- **Fault**: A component of the system fails deviating from specifications.
+- **Failure**: When system as a whole stops providing the required service to users.
+- **Netflix Chaos Monkey Test**: Deliberately inducing faults.
 
 #### Hardware Fault
 
@@ -51,19 +51,23 @@ Continuing to work correctly, even when things go wrong.
 ### Scalability
 
 #### Describing Load
+
 Using load parameters such as:
-  - Requests/sec
-  - Reads-to-Write ratio
-  - Hit rate on Cache
+
+- Requests/sec
+- Reads-to-Write ratio
+- Hit rate on Cache
 
 #### Describing Performance
+
 Using load parameters and system resources:
-  - **Average Response Time**
-  - **Tail Latencies**: High percentiles of response times (e.g., 95%, 99%, 99.9%)
-  - **Algorithms for Approximation of Tail Latencies Percentiles**:
-    - Forward decay
-    - t-digest
-    - HdrHistogram
+
+- **Average Response Time**
+- **Tail Latencies**: High percentiles of response times (e.g., 95%, 99%, 99.9%)
+- **Algorithms for Approximation of Tail Latencies Percentiles**:
+  - Forward decay
+  - t-digest
+  - HdrHistogram
 
 #### Approaches for Coping with Load
 
@@ -82,8 +86,8 @@ Using load parameters and system resources:
 
 ## Data Models
 
-
 - **Relational**:
+
   - Better support for joins
   - Many-to-one and many-to-many relationships
   - Schema-on-write
@@ -122,8 +126,6 @@ Using load parameters and system resources:
 
 #### Datalog
 
-
-
 ## Storage and Retrieval
 
 ### Log-Structured Storage Engines
@@ -133,14 +135,14 @@ Using load parameters and system resources:
 - Append log: create data log segments (indexed) and perform compaction after size limit reached, and merge with other compacted segments.
 - **Issues**: File Format, Deleting Records, Crash Recovery, partially written records, concurrency control
 
-#### SSTables *(Sorted String Tables)* and LSM-Trees *(Log-Structured Merge-Trees)*
+#### SSTables _(Sorted String Tables)_ and LSM-Trees _(Log-Structured Merge-Trees)_
 
 - **Advantages**:
   - Merging segments is simple and efficient (mergesort)
   - Finding a key is efficient
   - Compression (group several key-value pairs)
 - Separate log on disk to store recent writes, used in case of crashes
-- After *memtable* written to an SSTable, corresponding log can be discarded 
+- After _memtable_ written to an SSTable, corresponding log can be discarded
 - Examples: LevelDB, RocksDB, HBase, Cassandra
 
 ##### Bloom Filters
@@ -156,6 +158,7 @@ Using load parameters and system resources:
 - Range split into smaller SSTables and consolidate into new levels
 
 ### Page-Oriented Storage Engines
+
 #### B-Trees
 
 - When adding new data, if needed, split and re-partition the data with fixed page size
@@ -164,6 +167,7 @@ Using load parameters and system resources:
 - Latches (for concurrency lock)
 
 ##### Comparison with LSM-Trees
+
 - B-Trees are faster for reads, LSM-Trees are faster for writes
 - LSM-Trees sustain higher write throughput (as sometimes they have lower write amplification)
 - Compaction process can interfere with ongoing disk operations
@@ -178,6 +182,7 @@ Using load parameters and system resources:
 - In-Memory Database
 
 ### OLAP (Online Analytical Processing Systems)
+
 - Disk Bandwidth is bottleneck
 
 #### Data Warehouse
@@ -201,33 +206,37 @@ Using load parameters and system resources:
 
 ### Materialized Views
 
-- Aggregates 
+- Aggregates
 - Data cube (OLAP cube): grid of aggregates group by different dimensions
 
 ## Encoding
 
 - Translation from in-memory representation to a byte sequence,e.g., JSON document (serialization or marshalling)
 - Reverse is called decoding (parsing, deserialization, unmarshalling)
-- Examples: 
-    - Language Specific
-      - Java serialization: ```java.io.serializable```
-      - Ruby: ```marshall```
-      - Python: ```pickle```
-      - ```kryo``` in Java
-    - Language independent
-      - JSON, XML, CSV
+- Examples:
+  - Language Specific
+    - Java serialization: `java.io.serializable`
+    - Ruby: `marshall`
+    - Python: `pickle`
+    - `kryo` in Java
+  - Language independent
+    - JSON, XML, CSV
 
 ### Binary Encoding
+
 - Examples: JSON (MessagePack), BSON, BISON, XML (WBXML), Fast infoset
 - Thrift and Protocol Buffers (binary encoding) do not have a list/array datatype stage; instead, they use **repeated** markers
 
 ### Apache Avro
+
 - Based on schemas
 
 ## Modes of Dataflow
+
 ### Through DBs
-  - Backward and forward compatible
-  - Data outlines code, supports schema evolution
+
+- Backward and forward compatible
+- Data outlines code, supports schema evolution
 
 ### Through Services
 
@@ -277,21 +286,30 @@ Using load parameters and system resources:
 - Horizontal Scaling: Shared-nothing architecture
 
 ## Replication
+
 Why Replication:
-  - High availability
-  - Distributed writes
-  - Scaling
+
+- High availability
+- Distributed writes
+- Scaling
+
 ### Leader-Based Replication (Active/Passive or Master/Slave)
+
 Writes only on the leader, reads from any replica (leader or followers)
-#### Asynchronous Follower: 
+
+#### Asynchronous Follower:
+
 Replicas eventually catch up with the leader
-#### Synchronous Follower: 
+
+#### Synchronous Follower:
+
 Ensures that all replicas have the same data
-#### Semi-Synchronous: 
+
+#### Semi-Synchronous:
+
 Atleast one synchronous replica and others can be asynchronous
 
 #### Setting up new followers without locking the database
-
 
 ### Handling Node Outages
 
@@ -321,15 +339,18 @@ Atleast one synchronous replica and others can be asynchronous
 - **Monotonic Reads**: Avoid seeing things moving back in time (e.g., Ensure that each user always makes their reads from the same replica)
 - **Consistent Prefix Read**: Maintain order of writes for reading
 
-### Multi-Leader Replication: 
+### Multi-Leader Replication:
+
 - Explicit (master-master or active/active)
 
 Use Cases:
+
 - Multi-Datacenter Replication
 
   - Performance improvement over single-leader
   - Tolerance of datacenter outage
   - Tolerance of network partitions
+
 - Clients with offline operator (each client device is a datacenter now)
 - Collaborative Editing
 
@@ -355,6 +376,7 @@ Tools: Tungsten Replication (MySQL), BDR (PostgreSQL), Golden Gate (Oracle)
   - all-to-all (Version vectors can be used)
 
 ### Leaderless Replication:
+
 - E.g., DynamoDB (Amazon), Cassandra, Riak, Voldemort
 
 - Read requests are sent to several nodes in parallel and version numbers are used to determine which one is newer
@@ -363,15 +385,14 @@ Tools: Tungsten Replication (MySQL), BDR (PostgreSQL), Golden Gate (Oracle)
   - Anti-entropy: backgorund process that constantly looks for differences
 - **Quorums**: **w** (min replicas to have successful write) **+** **r** (min replicas to be queried for each read) **>** **n** (number of replicas)
 - Sloppy Quorum and Hinted Handoff:
-  - In large cluster (more than *n* nodes), if quorum is not established due to network intruption, then write to some nodes that are reachable (other than *n*); after intruption is fixed, writes are send to appropriate *n* nodes.
-- **Last Write Wins (LWW)**: 
+  - In large cluster (more than _n_ nodes), if quorum is not established due to network intruption, then write to some nodes that are reachable (other than _n_); after intruption is fixed, writes are send to appropriate _n_ nodes.
+- **Last Write Wins (LWW)**:
   - cause data loss
-  - concurrency detection: happens before 
+  - concurrency detection: happens before
 - Merging concurrently written values (siblings):
   - no data loss
   - either do a union or leave deletion marker (tombstone)
 - Colllection of version numbers is called **version vector**
-
 
 ## Partitioning or Sharding
 
@@ -380,7 +401,7 @@ Tools: Tungsten Replication (MySQL), BDR (PostgreSQL), Golden Gate (Oracle)
 
 - **Hot Spot**: A partition with disproportionately high load (skewed)
 
-### Partitioning by 
+### Partitioning by
 
 - Key Range
 
@@ -393,8 +414,9 @@ Tools: Tungsten Replication (MySQL), BDR (PostgreSQL), Golden Gate (Oracle)
   - Disadvantage: Inefficient range queries
 
 #### With secondary indexes, partitioning by:
-  - Document (local index)
-  - Term (global index)
+
+- Document (local index)
+- Term (global index)
 
 ### (Re)Partitioning Strategies
 
@@ -416,6 +438,7 @@ Parellel Query Execution
 
 - Grouped several reads and writes together into one logical unit (one operation): either it succeeds (commit) or it fails (abort, rollback) (**no partial failure**)
 - **Safety Guaranteed by Transactions**: ACID (Atomicity, Consistency, Isolation, Durability)
+
   - Systems not following ACID are called BASE (Basically Available, Soft State, and Eventual Consistency)
 
   - **Consistency**: (property of application) Certain statements about the data (invariants) that must be true (e.g., account balance)
@@ -423,8 +446,10 @@ Parellel Query Execution
   - **Isolation**: Concurrently executing transactions are isolated from each other (performance is impacted)
 
   - **Durability**: Once a transaction has committed, any data it has written will not be forgotten, even if there is a hardware fault or the database crashes
+
 - **Single Object Operations**
-  - Atomicity using a log for crash recovery 
+
+  - Atomicity using a log for crash recovery
   - Isolation using lock on each object
   - Complex Atomic Operations
     - Increment operations
@@ -438,21 +463,23 @@ Parellel Query Execution
 
 - Error Handling and Retry: retry after abort?
 
-
 ### Weak Isolation Levels
 
 #### Read Committed
+
 - Guarantees no dirty reads/writes
 - When reading from the database, only see data that has been committed
-- When writing to the database, only overwrite data that has been committed 
+- When writing to the database, only overwrite data that has been committed
 
 #### Snapshot Isolation
+
 - To prevent read skew
 - Using multi-version concurrency control (MVCC)
 
 A typical approach is that the read comitted uses a separate snapshot for each query, while snapshot isolation uses the same snapshot for entire transaction.
 
 #### Preventing lost update problem
+
 - E.g., when write-write conditions
 - Atomic write instead of read-modify-write
 - Cursor stability (exclusive lock)
@@ -460,6 +487,7 @@ A typical approach is that the read comitted uses a separate snapshot for each q
 - Compare-and-set
 
 #### Phantoms and write skews
+
 - Solution: materializing conflicts
 
 ### Serializability
@@ -472,6 +500,7 @@ A typical approach is that the read comitted uses a separate snapshot for each q
 - Data can be partitioned (depends on the data)
 
 #### Two-Phase Locking:
+
 - Transactions can also block readers and writers unlike snapshot isolation
 - **Lock Modes**:
   - Shared mode (read lock)
@@ -500,7 +529,8 @@ A typical approach is that the read comitted uses a separate snapshot for each q
 
 - Communicate through the network but cannot directly access each other's memory or disk
 
-#### Detecting Faults: 
+#### Detecting Faults:
+
 - Rapid feedbacks about a remote node's health are useful but cannot be counted upon
 - Retry a few times, wait for a timeout, and eventually declare the node dead
 
@@ -523,11 +553,11 @@ A typical approach is that the read comitted uses a separate snapshot for each q
   - Example: `System.currentTimeMillis()` in Java returns the number of milliseconds since the epoch, midnight UTC, Jan 1, 1970
   - Synchronized with NTP (Network Time Protocol) so it may be forcibly reset or jump back in time
 
--  Monotonic Clock
+- Monotonic Clock
 
-    - Suitable to measure duration
-    - Example: `System.nanoTime()` in Java
-    - NTP may adjust the frequency at which the clock ticks forward (slewing) but cannot make it jump back in time
+  - Suitable to measure duration
+  - Example: `System.nanoTime()` in Java
+  - NTP may adjust the frequency at which the clock ticks forward (slewing) but cannot make it jump back in time
 
 #### Clock Accuracy
 
@@ -538,6 +568,7 @@ A typical approach is that the read comitted uses a separate snapshot for each q
 - Based on Incremental Counters
 
 #### Google TreeTime API in spanner
+
 - Gives confidence interval [earliest, latest] for current time
 
 #### Process Pauses
@@ -546,21 +577,21 @@ A typical approach is that the read comitted uses a separate snapshot for each q
 - For multi-threaded data processing systems, real-time guarantees are simply not economical or appropriate
 
 ### Truths and Lies
+
 - Many distributed algorithms rely on a quorum, i.e., voting amoing nodes, e.g., to declare if a node is dead
 - Fencing token to prevent process pauses, e.g., when a node hasn't yet found but that it's lease has expired
-- nodes May lie, e.g.,  if a node may claim to have recieved a particular message when in fact it didn't. This behaviour is known as Byzantine Fault
-
-
+- nodes May lie, e.g., if a node may claim to have recieved a particular message when in fact it didn't. This behaviour is known as Byzantine Fault
 
 #### System Model
 
 - Synchronous Model
+
   - Assumes bounded network delay, bounded process pauses, and bounded clock error
     - Not practical
 
 - Partially Synchronous Model
-  - behaves as synch model most of the time
 
+  - behaves as synch model most of the time
 
 - Asynchronous Model
   - No timing assumptions
@@ -569,15 +600,18 @@ A typical approach is that the read comitted uses a separate snapshot for each q
 #### Fault Model
 
 - Crash-Stop Fault
+
   - Assumes node can fail only by crashing (once down, never comes back)
 
 - Crash-Recovery Fault
+
   - Nodes may respond after some time
 
 - Byzantine (Arbitrary) Faults
   - Nodes may lie
 
 ## Consistency
+
 ### Linearizability
 
 - Also known as atomic consistency, strong consistency, immediate consistency, or external consistency
@@ -644,6 +678,7 @@ A typical approach is that the read comitted uses a separate snapshot for each q
 - Assumes a network with bounded delay and nodes with bounded response time
 
 #### Distributed Transactions
+
 - Two types:
   - **Database Internal Distributed Transaction**
   - **Heterogenous Distributed Transaction**
@@ -652,6 +687,7 @@ A typical approach is that the read comitted uses a separate snapshot for each q
 #### Fault-Tolerant Consensus
 
 - A consensus algorithm satisfies:
+
   - **Uniform Agreement**: No two nodes decide differently
   - **Integrity**: No node decides twice
   - **Validity**
@@ -678,22 +714,23 @@ To avoid split brain in case of single-leader replication, consensus is needed t
 - Failure detection
 - Change notification
 
-
 ---
 
 # Dervied Data
+
 - Two categories of system:
   - **System of records** (source of truth, normalized)
   - **Derived Data** (reduntant, denormalized)
-    - *Services (online systems)*: Measure of performance: response time and availability
-    - *Batch processsing (offline)*: Measure of performance: thorughput time
-    - *Streaming processing (near real-time system)*
+    - _Services (online systems)_: Measure of performance: response time and availability
+    - _Batch processsing (offline)_: Measure of performance: thorughput time
+    - _Streaming processing (near real-time system)_
 
 ## Batch Processing
+
 - Unix tools: awk, sed, grep, sort, uniq, xengs
   - e.g., to find 5 most popular pages on website sing nginx default access log
-    
-    ```cat/var/log/nginx/access.log awk '{print $7}' | sort uniq -c  sort -nr head -n 5```
+
+    `cat/var/log/nginx/access.log awk '{print $7}' | sort uniq -c  sort -nr head -n 5`
 - the sort utility in GNU coreutils automatically handles larger-than-memory datasets by splilling to disk and automatically parallelizes sorting across multiple CPU cores.
 - the biggest delimitation of Unix is that they run only on single machine
 - Unix doesn't modify the niput files
@@ -722,6 +759,7 @@ To avoid split brain in case of single-leader replication, consensus is needed t
   - disproportionately active database records known as linchpin objects or hot keys for 'bringing all records with same key to the same place' when large amount of data related to a single key, this creates skew
 
 #### **Map-Side Join**
+
 - If we can make certain assumptions about some input data, it is possible to make joins faster
 
 - **Broadcast Hash Join**: For joining large datasets to small datasets
@@ -731,7 +769,8 @@ To avoid split brain in case of single-leader replication, consensus is needed t
 - The output of a reducer side join is partitioned and sorted by the join key whereas the output of a map-join is partitioned and sorted in the same way as the large input
 
 #### Output of Batch Workflows
--  there can be issues, when the output is directly written to datbase server, instead the batch job is preferred and write it as files to the job's output directory in the distributed file system
+
+- there can be issues, when the output is directly written to datbase server, instead the batch job is preferred and write it as files to the job's output directory in the distributed file system
 - By treating inputs as immutable and avoiding side-effecs, benefits:
   - human fault tolerance,
   - minimizing irreversibility (easy rollback),
@@ -740,7 +779,8 @@ To avoid split brain in case of single-leader replication, consensus is needed t
   - enables reuse of code
 
 #### Hadoop compared with distributed DBs
-- MPP (Massively Parallel processing) 
+
+- MPP (Massively Parallel processing)
   - DBs focus on parallel executton of analytic SQL queries on a cluster of machines, while the combo of MapReduce and a distributed file system provides something much more like a general-purpose OS that can run any arbitary program
 - Diversity of processing models
   - allows model such as SQL (from Hive) built on top of hadoop
@@ -748,6 +788,7 @@ To avoid split brain in case of single-leader replication, consensus is needed t
 - Design for frequent faults
 
 ### Beyond Map Reduce
+
 - The process of writing out intermediate state of files is called **Materialization**.
 - MapReduce jobs are separated
 
@@ -766,8 +807,9 @@ To avoid split brain in case of single-leader replication, consensus is needed t
 - No wait for operations, and no new JVM
 
 Fault tolerance in the absence of materialization
-  - Recomputation from the data is done
-  - Example: Spark uses RDD (Resilient Distributed Dataset), better to make operations deterministic
+
+- Recomputation from the data is done
+- Example: Spark uses RDD (Resilient Distributed Dataset), better to make operations deterministic
 
 ## Stream Processing
 
@@ -819,7 +861,9 @@ Fault tolerance in the absence of materialization
 - Process of observing all data changes written to a database and extracting them in a form in which they can be replicated to other systems
   - Using async database triggers
   - Log compaction: Log records with primary key and periodically throw away duplicates
+
 #### Event sourcing
+
 - The application logic is explicitly built on the basis of immutable events that are written to an event log
 
 ### Processing Streams

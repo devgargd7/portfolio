@@ -13,10 +13,11 @@ const Experience = () => {
       title: "Senior Software Engineer",
       range: "May 2025 - Present",
       description: [
-        "Architected a scalable backend from the ground up for an AI-first Learning Management Platform, achieving support for over 5,000 active students within 5 months by leveraging AWS services for high availability.",
-        "Ensured high-quality model performance for a multi-stage agentic RAG pipeline by designing and implementing a rigorous evaluation framework, which improved response relevance by 20% and reduced hallucinations by 25%",
-        "Drove improvements in development processes by leading a team of 5 engineers, establishing best practices for code reviews, testing, and agile methodologies to increase deployment frequency",
-        "Achieved significant operational efficiency by reducing monthly infrastructure costs by 15% through strategic AWS resource optimization and cutting API costs by 35% via prompt engineering and model selection.",
+        "Architected a scalable, AI-first LMS backend from zero-to-one, scaling to 5,000+ active students in 5 months while optimizing architecture to reduce median latency by 95% (1.4s to 67ms) and improve P95 latency by 3.5x.",
+        "Developed and optimized a multi-stage agentic RAG pipeline using LangChain, Pinecone vector databases and OpenAI API to automate complex workflows and boosting response relevance by 20% (measured via Ragas framework).",
+        "Led a team of 5 engineers to establish a high-velocity CI/CD culture, enabling reliable daily releases by implementing rigorous code review standards, agile workflows and automated testing pipelines.",
+        "Established end-to-end ownership of the platform, analyzed and optimized system efficiency, reducing monthly AWS infrastructure costs by 15% and cutting AI inference costs by 35% through token-efficient prompt design.",
+        "Designed and migrated the monolithic backend to a highly available, Multi-AZ architecture using Application Load Balancers, eliminating a single point of failure and increasing system throughput by 50% (18 to 27 RPS) under load.",
         "Ensured product compliance with WCAG 2.1 AA standards and ADA Title II by implementing accessible React components and conducting regular audits, improving usability for all students.",
       ],
       url: "https://www.encando.com/",
@@ -27,11 +28,11 @@ const Experience = () => {
       title: "Software Engineer (Data)",
       range: "May 2021 - December 2023",
       description: [
-        "Led development of scalable data processing systems for credit risk exposure analysis, leveraging Big Data technologies to enable high-volume (Million+ rows/day) data ingestion and transformation for downstream analytics.",
+
+        "Led the development of scalable data processing systems for credit risk analysis, enabling high-volume data ingestion for downstream analytics by utilizing Big Data technologies like Apache Spark and Kafka.",
+        "Accelerated system validation cycle times by 50% and reduced quarterly compute costs by €20,000 by building an automated regression testing suite and designing auto-scaling data pipelines.",
+        "Built and optimized distributed data workflows using Java, Spring Boot, SQL, Spark and Scala, supporting critical analytics capabilities for real-time risk management applications.",
         "Won Spot award for being an excellent team player.",
-        "Enhanced autoscaling on Azure Datalake to save €XX,XXX per quarter.",
-        "Developed several alerting and monitoring features, scripts using Scala and Spark improving productivity of the team.",
-        "Accelerated system validation by 50\% through automated regression testing.",
         "Mentored new teammates and contributed to every phase of the Software Development Lifecycle, from requirement gathering/data analysis to deployment and prod support.",
       ],
       url: "https://www.societegenerale.com/en",
@@ -63,7 +64,7 @@ const Experience = () => {
       title: "B.Tech. Electronics Engineering",
       range: "2017 - 2021",
       url: "https://iitbhu.ac.in",
-      courses: ["Natual Languange Processing", "Computer Vision"],
+      courses: ["Natual Language Processing", "Computer Vision"],
       gpa: "8.78/10.0"
 
     },
