@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export const metadata: Metadata = {
   title: "Dev Garg",
-  description: "Portfolio",
+  description: "Dev Garg",
 };
 
 export default function RootLayout({
@@ -15,8 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" data-theme="dark">
+      <GoogleAnalytics gaId="G-SBGST8STT0" />
+      <body className="leading-relaxed antialiased">
+        {children}
+      </body>
     </html>
   );
 }
